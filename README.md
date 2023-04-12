@@ -1,4 +1,5 @@
-# Statistics-Leaderboard-Website
+# Statistics & Leaderboard Website
+### A professional player showcase for a popular RTS game 'SC2'
 ### Created with Django/Python/HTML/CSS
 https://aligulac.onrender.com/aligulac/home/
 #
