@@ -1,5 +1,6 @@
 # Statistics-Leaderboard-Website
 ### Created with Django/Python/HTML/CSS
+https://aligulac.onrender.com/aligulac/home/
 #
 Functionality:
 - Input new players
@@ -8,3 +9,4 @@ Functionality:
 - Automatically ranks players based on overall rating
 - See previous match results for every player
 - See previous rating history in graph form
+- Can search for specific results
