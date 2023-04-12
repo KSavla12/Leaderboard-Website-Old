@@ -1,0 +1,127 @@
+{% extends "aligulacv2/base.html" %}
+{% load static %}
+
+{% block content %}   
+  
+
+<!-- search results -->
+  <div class="results">
+    <h2 class="h2-2">R<span class="h2-title-2">ESULTS </span></h2>
+    <div class="match-data-titles">
+      <div>Date</div>
+      <div>Rating</div>
+      <div class="right-column">Player A</div>
+      <div style="margin-left: auto; margin-right: auto;">Score</div>
+      <div>Player B</div>
+      <div>Rating</div>
+    </div>
+    {% for p in matches %}
+    <div class="match-data">
+      <div>
+        {{ p.date }}
+      </div>
+      <div>
+        {{ p.player_a_rating }}
+      </div>
+      <div class="right-column">
+        {{ p.player_a }}
+        
+        <img
+        src="https://flagcdn.com/16x12/{{ p.player_a.country_code }}.png"
+        srcset="https://flagcdn.com/32x24/am.png 2x,
+          https://flagcdn.com/48x36/am.png 3x"
+        alt="{{ p.player_country }}">
+
+        {% if p.player_a.player_race == "Zerg" %}
+          <img src="{% static 'aligulacv2/icons/Z.png' %}">
+        {% elif p.player_a.player_race == "Terran" %}
+          <img src="{% static 'aligulacv2/icons/T.png' %}">
+        {% elif p.player_a.player_race == "Protoss" %}
+          <img src="{% static 'aligulacv2/icons/P.png' %}">
+        {% endif %}
+
+      </div>
+      <div style="margin-left: auto; margin-right: auto;">{{ p.player_a_score }} - {{ p.player_b_score }}</div>
+      <div>
+        {% if p.player_b.player_race == "Zerg" %}
+          <img src="{% static 'aligulacv2/icons/Z.png' %}">
+        {% elif p.player_b.player_race == "Terran" %}
+          <img src="{% static 'aligulacv2/icons/T.png' %}">
+        {% elif p.player_b.player_race == "Protoss" %}
+          <img src="{% static 'aligulacv2/icons/P.png' %}">
+        {% endif %}
+
+        <img
+        src="https://flagcdn.com/16x12/{{ p.player_b.country_code }}.png"
+        srcset="https://flagcdn.com/32x24/am.png 2x,
+          https://flagcdn.com/48x36/am.png 3x"
+        alt="{{ p.player_country }}">
+
+        {{ p.player_b }}
+      </div>
+      <div>{{ p.player_b_rating }}</div>
+    </div>
+    {% endfor %}
+
+  </div>
+{% endblock %} 
+
+{% block scripts %}
+<!--Chart js-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" integrity="sha256-Uv9BNBucvCPipKQ2NS9wYpJmi8DTOEfTA/nH2aoJALw=" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css" integrity="sha256-aa0xaJgmK/X74WM224KMQeNQC2xYKwlAt08oZqjeF0E=" crossorigin="anonymous" />
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+<div class="chartBox">
+  <center>
+    <div>
+      Rating history for {{ name }}
+    </div>
+  </center>
+  <canvas id="myChart"></canvas>
+</div>
+<center>
+  <script>
+  $(document).ready(function(){
+    const ctx = document.getElementById('myChart').getContext('2d');
+    const myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: [{% for item in player1 %}'{{item}}',{% endfor %}],
+            datasets: [{
+                label: '{{ name }}',
+                data: {{rating|safe}},
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+          maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+  });
+</script>
+</center>
+{% endblock scripts %}

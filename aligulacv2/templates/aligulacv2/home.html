@@ -1,0 +1,50 @@
+{% extends "aligulacv2/base.html" %}
+{% load static %}
+
+{% block content %}    
+
+  <div class="top-10">
+    <h2>C<span class="h2-title">URRENT TOP </span>10</h2>
+    <div class="player-data-titles">
+      <div>#</div>
+      <div></div>
+      <div></div>
+      <div>Name</div>
+      <div>Rating</div>
+      <div>vP</div>
+      <div>vT</div>
+      <div>vZ</div>
+    </div>
+    {% for p in players %}
+    <div class="player-data">
+      <div>{{ forloop.counter }}</div>
+      <div>
+        <img
+        src="https://flagcdn.com/16x12/{{ p.country_code }}.png"
+        srcset="https://flagcdn.com/32x24/am.png 2x,
+          https://flagcdn.com/48x36/am.png 3x"
+        alt="{{ p.player_country }}">
+      </div>
+      <div>
+        {% if p.player_race == "Zerg" %}
+          <img src="{% static 'aligulacv2/icons/Z.png' %}">
+        {% elif p.player_race == "Terran" %}
+          <img src="{% static 'aligulacv2/icons/T.png' %}">
+        {% elif p.player_race == "Protoss" %}
+          <img src="{% static 'aligulacv2/icons/P.png' %}">
+        {% endif %}
+      </div>
+      <div>
+        <a href="{% url 'player_page' p.id %}" style="text-decoration:none; color: black;">
+          <p class="name_colour" style="color: rgb(94, 94, 199);">{{ p.player_name }}</p>
+        </a>
+      </div>
+      <div>{{ p.rating }}</div>
+      <div>{{ p.rating_v_p }}</div>
+      <div>{{ p.rating_v_t }}</div>
+      <div>{{ p.rating_v_z }}</div>
+    </div>
+    {% endfor %}
+  </div>
+
+{% endblock %}    

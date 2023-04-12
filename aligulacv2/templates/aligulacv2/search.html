@@ -1,0 +1,92 @@
+{% extends "aligulacv2/base.html" %}
+{% load static %}
+
+{% block content %}   
+<form class="d-flex" method=POST action="">
+  {% csrf_token %}
+  <div class="top-10-1">
+    <div class="h22">
+      <h2>S<span class="h2-title">EARCH </span></h2>
+    </div>
+    <div class="player-data-titles-1">
+      <div>Player:</div>
+      <div><input class="input-design" type="text" name="player"></div>
+    </div>
+    <div class="player-data-titles-1">
+      <div>Date:</div>
+      <div>
+        <input class="input-design" type="date" name="fromdate" value="2000-01-01"> <!--- add default date-->
+        to
+        <input class="input-design" type="date" name="todate" value="2030-01-01">
+      </div>
+    </div>
+    <div class="player-data-titles-1">
+      <button type="submit">Search</button>
+    </div>
+  </div>
+</form>    
+
+<!-- search results -->
+  {% if search %}
+  <div class="results">
+    <h2>R<span class="h2-title">ESULTS </span></h2>
+    <div class="match-data-titles">
+      <div>Date</div>
+      <div>Rating</div>
+      <div class="right-column">Player A</div>
+      <div style="margin-left: auto; margin-right: auto;">Score</div>
+      <div>Player B</div>
+      <div>Rating</div>
+      <div>Bo</div>
+    </div>
+    {% for p in search %}
+    <div class="match-data">
+      <div>
+        {{ p.date }}
+      </div>
+      <div>
+        {{ p.player_a_rating }}
+      </div>
+      <div class="right-column">
+        {{ p.player_a }}
+        
+        <img
+        src="https://flagcdn.com/16x12/{{ p.player_a.country_code }}.png"
+        srcset="https://flagcdn.com/32x24/am.png 2x,
+          https://flagcdn.com/48x36/am.png 3x"
+        alt="{{ p.player_country }}">
+
+        {% if p.player_a.player_race == "Zerg" %}
+          <img src="{% static 'aligulacv2/icons/Z.png' %}">
+        {% elif p.player_a.player_race == "Terran" %}
+          <img src="{% static 'aligulacv2/icons/T.png' %}">
+        {% elif p.player_a.player_race == "Protoss" %}
+          <img src="{% static 'aligulacv2/icons/P.png' %}">
+        {% endif %}
+
+      </div>
+      <div style="margin-left: auto; margin-right: auto;">{{ p.player_a_score }} - {{ p.player_b_score }}</div>
+      <div>
+        {% if p.player_b.player_race == "Zerg" %}
+          <img src="{% static 'aligulacv2/icons/Z.png' %}">
+        {% elif p.player_b.player_race == "Terran" %}
+          <img src="{% static 'aligulacv2/icons/T.png' %}">
+        {% elif p.player_b.player_race == "Protoss" %}
+          <img src="{% static 'aligulacv2/icons/P.png' %}">
+        {% endif %}
+
+        <img
+        src="https://flagcdn.com/16x12/{{ p.player_b.country_code }}.png"
+        srcset="https://flagcdn.com/32x24/am.png 2x,
+          https://flagcdn.com/48x36/am.png 3x"
+        alt="{{ p.player_country }}">
+
+        {{ p.player_b }}
+      </div>
+      <div>{{ p.player_b_rating }}</div>
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+{% endblock %} 

@@ -1,0 +1,136 @@
+.title {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+
+}
+
+.sub-title {
+    color: rgb(153, 153, 153);
+    letter-spacing: 2px;
+    margin-right: -2px;
+    margin-top: 8px;
+}
+
+.nav-bar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 15px;
+    color: rgb(119, 117, 117);
+
+    margin-top: 16px;
+
+    border-top-width: 1px;
+    border-top-color: rgb(231, 231, 231);
+    border-top-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: rgb(231, 231, 231);
+    border-bottom-style: solid;
+    
+    background-color: rgb(248, 248, 248);
+    
+}
+
+.nav-content {
+    padding-right: 14px;
+    padding-left: 14px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+}
+
+.nav-content:hover {
+    color: rgb(36, 36, 36);
+    background-color: rgb(218, 218, 218);
+
+}
+
+.drop-sym {
+    font-size: 16px;
+}
+
+.name_color {
+    color: rgb(221, 52, 80);
+}
+
+.top-10 {
+    display: grid;
+    grid-template-rows: 32px 46px 36px 36px 36px 36px 36px 
+    36px 36px 36px 36px 36px 36px 36px 36px 36px 36px 36px 
+    36px 36px 36px 36px 36px 36px 36px 36px 36px 36px 36px;
+    justify-content: center;
+
+    margin-top: 14px;
+
+    padding-top: 20px;
+    padding-left: 140px;
+    padding-right: 140px;
+}
+
+.player-data-titles,
+.player-data {
+    display: grid;
+    grid-template-columns: 34px 16px 16px 220px 60px 60px 60px 40px;  
+    column-gap: 14px;
+    padding-left: 10px;
+    padding-right: 10px;
+
+    font-size: 15px;
+    color: rgb(51, 51, 51);
+}
+
+.player-data-titles {
+    font-weight: bold;
+
+    align-items: center;
+
+    border-top-width: 1px;
+    border-top-color: rgb(231, 231, 231);
+    border-top-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: rgb(231, 231, 231);
+    border-bottom-style: solid;
+}
+
+.player-data-titles-filter {
+    font-weight: bold;
+
+    align-items: center;
+
+    border-top-width: 1px;
+    border-top-color: rgb(231, 231, 231);
+    border-top-style: solid;
+}
+
+.player-data {
+    align-items: center;
+
+    border-top-width: 1px;
+    border-top-color: rgb(231, 231, 231);
+    border-top-style: solid;
+}
+
+.player-data:nth-of-type(odd) {background: rgb(255, 255, 255) !important;}
+.player-data:nth-of-type(even) {background: rgb(245, 245, 245) !important;}
+
+
+.chartBox {
+    width: 800px;
+    height: 250px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+
+    font-family: Roboto, Arial;
+    color: rgb(73, 73, 73);
+}
+  
+.options_rows {
+    display: grid;
+    justify-content: right;
+
+    align-items: center;
+    padding-top: 6px;
+}

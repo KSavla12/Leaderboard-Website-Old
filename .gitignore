@@ -1,0 +1,5 @@
+mysite/*.env
+/requirements.txt
+/data.json
+/db.sqlite3
+/Procfile

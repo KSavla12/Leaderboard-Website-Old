@@ -1,0 +1,76 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'aligulacv2/general.css' %}">
+<link rel="stylesheet" href="{% static 'aligulacv2/base.css' %}">
+<link rel="stylesheet" href="{% static 'aligulacv2/search.css' %}">
+
+<!DOCTYPE html>   
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus+SC&display=swap" rel="stylesheet">
+
+    {% if title %}
+      <title>Aligulac - {{ title }}</title>
+    {% else %}
+      <title>Aligulac</title>
+    {% endif %}
+  </head>
+  <body>
+    <div class="title">
+      <a href="{% url 'home' %}" style="text-decoration:none; color:black;" >
+        <div>
+          <h1>ALIGULAC</h1>
+        </div>
+      </a>
+      <div class="sub-title">
+        <p>StarCraft 2 Progaming Statistics and Predictions</p>
+      </div>
+    </div>
+
+    <div class="nav-bar">
+      <a href="{% url 'player_list' %}" style="text-decoration:none; color:rgb(128, 128, 128);">
+        <div class="nav-content">
+          Ranking 
+        </div>
+      </a>
+      <a href="{% url 'search' %}" style="text-decoration:none; color:rgb(128, 128, 128);">
+        <div class="nav-content">
+          Search 
+        </div>
+      </a>
+      <div class="nav-content">
+        Records
+      </div>
+      <div class="nav-content">
+        Results
+      </div>
+      <div class="nav-content">
+        Inference
+      </div>
+      <div class="nav-content">
+        Misc
+      </div>
+      <div class="nav-content">
+        About
+      </div>
+      <a href="https://aligulacv2.onrender.com/admin" target="_blank" style="text-decoration:none; color:rgb(128, 128, 128);">
+        <div class="nav-content">
+          Submit
+        </div>
+      </a>
+    </div>
+
+    {% block scripts %}
+    {% endblock scripts %}
+
+    {% block content %}
+    {% endblock %}
+
+  </body>
+</html>
